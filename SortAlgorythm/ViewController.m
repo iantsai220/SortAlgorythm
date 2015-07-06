@@ -23,9 +23,14 @@
     
     NSLog(@"%@", unsortedArray);
     
-    NSArray *sortedArray = [self bubbleSort:unsortedArray];
+    
+    NSArray *sortedArray = [self selectionSort:unsortedArray];
     
     NSLog(@"%@", sortedArray);
+    
+//    NSArray *sortedArray = [self bubbleSort:unsortedArray];
+    
+//    NSLog(@"%@", sortedArray);
     
     
 }
@@ -35,28 +40,50 @@
     // Dispose of any resources that can be recreated.
 }
 
--(NSArray *)bubbleSort:(NSMutableArray *)unsortedArray {
+//-(NSArray *)bubbleSort:(NSMutableArray *)unsortedArray {
+//    
+//    BOOL swapped = YES;
+//    
+//    while (swapped) {
+//        
+//        swapped = NO;
+//    
+//        for (int i = 1; i < unsortedArray.count; i++) {
+//            
+//            if (unsortedArray[i-1] > unsortedArray[i]) {
+//                
+//                [unsortedArray exchangeObjectAtIndex:i-1 withObjectAtIndex:i];
+//                
+//                swapped = YES;
+//            }
+//        }
+//    }
+//
+//    return unsortedArray;
+//}
+
+-(NSArray *)selectionSort:(NSMutableArray *)unsortedArray {
     
-    BOOL swapped = YES;
+    int largestIndex;
     
-    while (swapped) {
+    for (int i = 0; i < unsortedArray.count; i++) {
         
-        swapped = NO;
-    
-        for (int i = 1; i < unsortedArray.count; i++) {
+        for (int j = i + 1; j < unsortedArray.count; j++) {
             
-            if (unsortedArray[i-1] > unsortedArray[i]) {
+            if (unsortedArray[j] > unsortedArray[i]) {
                 
-                [unsortedArray exchangeObjectAtIndex:i-1 withObjectAtIndex:i];
+                largestIndex = j;
                 
-                swapped = YES;
+                [unsortedArray exchangeObjectAtIndex:i withObjectAtIndex:largestIndex];
+                
             }
+            
         }
+        
     }
     
-    
-    
     return unsortedArray;
+    
 }
 
 @end
